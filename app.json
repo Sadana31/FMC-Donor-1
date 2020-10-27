@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "environment",
-    "slug": "environment",
+    "name": "FMC Donor",
+    "slug": "FMC Donor",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
