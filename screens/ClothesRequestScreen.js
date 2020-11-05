@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, TextInput, TouchableOpacity, Alert} from 'react-native';
-import MyHeader from '../components/Header';
+import MyHeader from '../components/MyHeader';
 import db from '../config';
 import firebase from 'firebase';
 
@@ -12,58 +12,58 @@ export default class FoodRequestScreen extends React.Component {
             gender: "",
             clothSize: "",
             clothName: "",
+            synopsis: ""
         }
     }
 
-    addFoodRequest=()=>{
-        db.collection("requestedFoods").add({
-            "foodName": this.state.foodName,
+    addClothRequest=()=>{
+        db.collection("requestedItems").add({
+            "name": this.state.clothName,
+            "type": "cloth",
             "synopsis": this.state.synopsis,
             "requesterID": this.state.emailID,
             "date": firebase.firestore.FieldValue.serverTimestamp()
         })
-        this.setState({
-            foodName: "",
-            synopsis: "",
-        })
-        return Alert.alert("Food item requested successfully!!");
+        return Alert.alert("Cloth requested successfully!!");
     }
 
     
     render(){
         return(
             <View>
-                <MyHeader text="FOOD" />
+                <MyHeader text="CLOTHES" />
                 <TextInput placeholder="Enter type or name of cloth" style={styles.input1}
                 onChangeText={(text)=>{
-                    this.setState({foodName: text})
+                    this.setState({clothName: text})
                 }}/>
 
                 <TextInput placeholder="Male or Female" style={styles.input1}
                 onChangeText={(text)=>{
-                    this.setState({foodName: text})
+                    this.setState({gender: text})
                 }}/>
 
                 <TextInput placeholder="Enter size" style={styles.input1}
                 onChangeText={(text)=>{
-                    this.setState({foodName: text})
+                    this.setState({clothSize: text})
                 }}/>
 
                 <TextInput placeholder="Any other preferences (optional)" 
                 style={[styles.input1, {}]}
                 onChangeText={(text)=>{
-                    this.setState({foodName: text})
+                    this.setState({synopsis: text})
                 }}/>
 
                 <TouchableOpacity style={styles.button} 
                 onPress={()=>{
-                    this.addFoodRequest();
+                    this.addClothRequest();
                     this.setState({
-                        foodName: "",
+                        clothName: "",
+                        clothSize: "",
+                        gender: "",
                         synopsis: "",
                     })
                 }}>
-                    <Text style={styles.buttonText}>REQUEST FOOD ITEM</Text>
+                    <Text style={styles.buttonText}>REQUEST CLOTH</Text>
                 </TouchableOpacity>
             </View>
         )

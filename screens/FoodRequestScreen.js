@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, TextInput, TouchableOpacity, Alert} from 'react-native';
-import MyHeader from '../components/Header';
+import MyHeader from '../components/MyHeader';
 import db from '../config';
 import firebase from 'firebase';
 
@@ -16,8 +16,9 @@ export default class FoodRequestScreen extends React.Component {
     }
 
     addFoodRequest=()=>{
-        db.collection("requestedFoods").add({
-            "foodName": this.state.foodName,
+        db.collection("requestedItems").add({
+            "name": this.state.foodName,
+            "type": "food",
             "synopsis": this.state.synopsis,
             "requesterID": this.state.emailID,
             "date": firebase.firestore.FieldValue.serverTimestamp()
