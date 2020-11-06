@@ -34,7 +34,7 @@ export default class FoodRequestScreen extends React.Component {
     render(){
         return(
             <View>
-                <MyHeader text="FOOD" />
+                <MyHeader text="FOOD" navigation={this.props.navigation} />
                 <TextInput placeholder="Enter name of food item" style={styles.input1}
                 onChangeText={(text)=>{
                     this.setState({foodName: text})

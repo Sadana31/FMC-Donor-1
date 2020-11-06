@@ -197,7 +197,7 @@ export default class WelcomeScreen extends React.Component{
       <KeyboardAvoidingView
         style={{flex: 1, alignItems: "center"}} behavior="margin" enabled>
         {this.showModal()}
-        <MyHeader text="ENVIRONMENT"/>
+        <MyHeader text="ENVIRONMENT" />
         <View style={{borderWidth: 2, marginTop: 20, 
           borderRadius: 15, borderColor: "blue"}}>
             <Text style={styles.head}>Welcome to FMC DONOR: </Text>

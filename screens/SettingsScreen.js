@@ -52,7 +52,7 @@ export default class SettingsScreen extends React.Component {
     render(){
         return(
             <View>
-                <MyHeader text="Settings"/>
+                <MyHeader text="Settings"  navigation={this.props.navigation}/>
 
                 <Text style={styles.header}>FIRST NAME</Text>
                 <TextInput onChangeText={(text)=>{

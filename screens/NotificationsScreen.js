@@ -51,7 +51,7 @@ export default class NotificationsScreen extends React.Component {
     render(){
         return(
             <View>
-                <MyHeader text="Notifications" />
+                <MyHeader text="Notifications"  navigation={this.props.navigation}/>
 
                 <View style={{flex:0.9}}>
                     {

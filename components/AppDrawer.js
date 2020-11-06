@@ -4,6 +4,7 @@ import { BottomTabNavigator } from './BottomTabNavigator';
 import ReceivedItems from "../screens/ReceivedItems";
 import NotificationsScreen from "../screens/NotificationsScreen";
 import SettingsScreen from "../screens/SettingsScreen";
+import SideBarMenu  from './SideBarMenu';
 
 export const AppDrawer = createDrawerNavigator({
     Home: {
@@ -27,4 +28,10 @@ export const AppDrawer = createDrawerNavigator({
             drawerLabel: <Icon type="bell" color="grey"/>
         }
     },
-})
+},
+{
+    contentComponent: SideBarMenu
+  },
+  {
+    initialRouteName : 'Home'
+  })
