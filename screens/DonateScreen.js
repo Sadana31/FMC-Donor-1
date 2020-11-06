@@ -59,7 +59,7 @@ export default class DonateScreen extends Component{
   render(){
     return(
       <View style={{flex:1}}>
-        <MyHeader title="Donate items" navigation ={this.props.navigation}/>
+        <MyHeader text="Donate items" navigation ={this.props.navigation}/>
         <View style={{flex:1}}>
           {
             this.state.requesteditemsList.length === 0

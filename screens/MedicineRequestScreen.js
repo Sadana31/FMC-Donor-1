@@ -1,8 +1,10 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, TouchableOpacity, SafeAreaView, Image} from 'react-native';
 import MyHeader from '../components/MyHeader';
-import {Avatar} from 'react-native-elements';
+import {Avatar, Icon} from 'react-native-elements';
 import * as ImagePicker from 'expo-image-picker';
+import firebase from 'firebase';
+import {Carousel} from 'react-native-snap-carousel';
 
 export default class MedicineRequestScreen extends React.Component {
     constructor(props){
@@ -100,39 +102,41 @@ export default class MedicineRequestScreen extends React.Component {
 
     render(){
         return(
-            <View>
-                <MyHeader text="MEDICINES" />
-                
-                <SafeAreaView style={{flex: 1, backgroundColor:'rebeccapurple', paddingTop: 50, }}>
-                    <View style={{ flex: 1, flexDirection:'row', justifyContent: 'center', }}>
-                        <Carousel
-                        layout={"default"}
-                        ref={ref => this.carousel = ref}
-                        data={this.state.carouselItems}
-                        sliderWidth={300}
-                        itemWidth={300}
-                        renderItem={this._renderItem}
-                        onSnapToItem = { index => this.setState({activeIndex:index}) } />
-                    </View>
-                </SafeAreaView>
+            <View style={{alignItems: "center"}}>
+              <MyHeader text="MEDICINES" />
 
-                <Text style={styles.head}>
+              <Text style={styles.head}>
                     If you are in need of any other medicines, 
                     kindly upload a prescription given by a proper doctor
                 </Text>
 
+                <View style={{flexDirection: "row", alignItems: "center"}}></View>
+
                 <Avatar rounded
-                  source={{
+                  source={{ 
                     uri: this.state.image
                   }}
-                  size="large"
+                  size="xlarge"
+                  title="Upload image"
                   onPress={()=>{this.selectPicture()}}
-                  containerStyle={styles.imageContainer}
+                  alignSelf="center"
                   showEditButton/>
 
                   <TouchableOpacity style={styles.button}>
                       <Text style={styles.buttonText}>REQUEST</Text>
                   </TouchableOpacity>
+
+              
+                {/* 
+                
+                
+                    <View style={{ flex: 1, flexDirection:'row', justifyContent: 'center', }}>
+                        
+                    </View>
+                </SafeAreaView>
+
+                
+            </View> */}
             </View>
         )
     }
@@ -143,21 +147,23 @@ const styles = StyleSheet.create({
         fontWeight: "bold",
         fontSize: 25,
         color: "darkblue",
-        textAlign: center,
+        textAlign: 'center',
+        margin: 7,
+        padding: 5
     },
     button: {
-        borderRadius: 10,
-        backgroundColor: "#0080ff",
-        width: "60%",
-        height: "5%",
-        alignSelf: "center",
-        marginTop: 20
-    },
-    buttonText: {
-        textAlign: "center",
-        color: "white",
-        fontWeight: "bold",
-        fontSize: 15,
-        marginTop: 6
-    }
+      borderRadius: 10,
+      backgroundColor: "#0080ff",
+      width: "60%",
+      height: "10%",
+      alignSelf: "center",
+      marginTop: 20
+  },
+  buttonText: {
+      textAlign: "center",
+      color: "white",
+      fontWeight: "bold",
+      fontSize: 15,
+      marginTop: 6
+  }
 })

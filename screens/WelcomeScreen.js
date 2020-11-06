@@ -31,7 +31,7 @@ export default class WelcomeScreen extends React.Component{
   login=(emailId, password)=>{
     firebase.auth().signInWithEmailAndPassword(emailId, password)
     .then(()=>{
-      return Alert.alert("Signed In")
+      this.props.navigation.navigate("DonateScreen");
     })
     .catch((error)=>{
       //Handle Errors here.
@@ -81,7 +81,7 @@ export default class WelcomeScreen extends React.Component{
         >
         <View style={styles.modalContainer}>
           <ScrollView style={{width:'100%'}}>
-            <KeyboardAvoidingView style={styles.KeyboardAvoidingView}>
+            <KeyboardAvoidingView style={styles.KeyboardAvoidingView} behavior="margin" enabled>
             <Text
               style={styles.modalTitle}
               >Sign Up here!!</Text>
@@ -207,6 +207,7 @@ export default class WelcomeScreen extends React.Component{
 
         <View style={{alignItems: "center", flex: 1}}> 
           <TextInput style={[styles.input, {marginTop:30}]}
+          keyboardType="email-address"
             placeholder="enter your email"
             onChangeText={(text)=>{
               this.setState({emailId: text})

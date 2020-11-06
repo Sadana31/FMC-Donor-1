@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Text, View, StyleSheet, TextInput, 
-TouchableOpacity,KeyboardAvoIDingView, Alert} from 'react-native';
+TouchableOpacity,KeyboardAvoidingView, Alert} from 'react-native';
 import db from '../config';
 import {Header,Icon,Card} from 'react-native-elements';
 import firebase from 'firebase';
